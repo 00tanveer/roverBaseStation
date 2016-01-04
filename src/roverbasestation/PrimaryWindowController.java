@@ -21,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import roverbasestation.TCPConnection.TCPConnect;
@@ -42,6 +43,9 @@ public class PrimaryWindowController implements Initializable, Runnable {
     private Circle circle;
     @FXML 
     private TextField targetIP, port;
+    
+    @FXML
+    public AnchorPane map;
     
     //pin console FXML ids
     @FXML

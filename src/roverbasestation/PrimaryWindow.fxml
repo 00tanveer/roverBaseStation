@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.scene.shape.*?>
@@ -9,8 +10,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="888.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="roverbasestation.PrimaryWindowController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="888.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="roverbasestation.PrimaryWindowController">
   <tabs>
+      <Tab text="Chemist" />
     <Tab text="Connect">
          <content>
             <SplitPane dividerPositions="0.5233333333333333" prefHeight="160.0" prefWidth="200.0">
@@ -36,9 +38,28 @@
     </Tab>
     <Tab text="Navigation">
          <content>
-            <BorderPane prefHeight="516.0" prefWidth="677.0">
-               <left>
-                  <TabPane prefHeight="478.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <AnchorPane>
+               <children>
+                  <AnchorPane fx:id="map" layoutX="210.0" prefHeight="458.0" prefWidth="638.0">
+                     <children>
+                        <ImageView fitHeight="466.0" fitWidth="678.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Selection_00.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="latitude" layoutX="221.0" layoutY="475.0" text="Latitude:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="longitude" layoutX="14.0" layoutY="475.0" text="Longitude:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <TabPane prefHeight="598.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
                       <Tab text="Pin Console">
                         <content>
@@ -93,40 +114,25 @@
                                        </image>
                                     </ImageView>
                                     <Label layoutX="52.0" layoutY="256.0" text="#orientation" />
-                                 </children></AnchorPane>
+                                 </children>
+                              </AnchorPane>
                         </content>
                       </Tab>
                     </tabs>
                   </TabPane>
-               </left>
-               <center>
-                  <AnchorPane>
+                  <HBox layoutX="210.0" layoutY="510.0" prefHeight="88.0" prefWidth="679.0">
                      <children>
-                        <ImageView fitHeight="524.0" fitWidth="687.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@Selection_00.png" />
-                           </image>
-                        </ImageView>
+                        <Circle fx:id="statusCircle" fill="LIME" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Label fx:id="humidity" text="Humidity: #%" />
+                        <Label fx:id="pressure" text="Barometric Pressure: #kPa" />
+                        <Label fx:id="lux" text="Lux: #" />
+                        <Label fx:id="battery" text="Battery: #%" />
+                        <Label fx:id="temperature" text="Temperature:" />
                      </children>
-                  </AnchorPane>
-               </center>
-               <bottom>
-                  <AnchorPane prefHeight="93.0" prefWidth="888.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Circle fx:id="statusCircle" fill="LIME" layoutX="39.0" layoutY="32.0" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Label fx:id="humidity" layoutX="99.0" layoutY="25.0" text="Humidity: #%" />
-                        <Label fx:id="pressure" layoutX="215.0" layoutY="25.0" text="Barometric Pressure: #kPa" />
-                        <Label fx:id="lux" layoutX="414.0" layoutY="25.0" text="Lux: #" />
-                        <Label fx:id="latitude" layoutX="488.0" layoutY="25.0" text="Latitude:" />
-                        <Label fx:id="battery" layoutX="777.0" layoutY="26.0" text="Battery: #%" />
-                        <Label fx:id="longitude" layoutX="489.0" layoutY="49.0" text="Longitude:" />
-                        <Label fx:id="temperature" layoutX="631.0" layoutY="26.0" text="Temperature:" />
-                     </children>
-                  </AnchorPane>
-               </bottom>
-            </BorderPane>
+                  </HBox>
+               </children>
+            </AnchorPane>
          </content>
     </Tab>
-      <Tab text="Chemist" />
   </tabs>
 </TabPane>
