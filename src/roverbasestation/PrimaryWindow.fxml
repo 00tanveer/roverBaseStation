@@ -40,23 +40,13 @@
          <content>
             <AnchorPane>
                <children>
-                  <AnchorPane fx:id="map" layoutX="199.0" prefHeight="509.0" prefWidth="628.0">
+                  <AnchorPane fx:id="map" layoutX="199.0" prefHeight="477.0" prefWidth="687.0">
                      <children>
-                        <ImageView fitHeight="463.0" fitWidth="710.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="mapImageView" fitHeight="440.0" fitWidth="651.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@Selection_00.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="latitude" layoutX="269.0" layoutY="475.0" text="Latitude:">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="longitude" layoutX="452.0" layoutY="475.0" text="Longitude:">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
                      </children>
                   </AnchorPane>
                   <TabPane prefHeight="598.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
@@ -71,24 +61,24 @@
                                     <Label layoutX="18.0" layoutY="80.0" text="Upper right coordinates" />
                                     <TextField fx:id="lowerLatText" layoutX="15.0" layoutY="40.0" prefHeight="27.0" prefWidth="74.0" promptText="Latitude" />
                                     <TextField fx:id="upperLatText" layoutX="15.0" layoutY="104.0" prefHeight="27.0" prefWidth="74.0" promptText="Latitude" />
-                                    <TextField fx:id="descriptionText" layoutX="16.0" layoutY="252.0" prefHeight="62.0" prefWidth="171.0" promptText="Description" />
+                                    <TextField fx:id="descriptionText" disable="true" layoutX="16.0" layoutY="252.0" prefHeight="62.0" prefWidth="171.0" promptText="Description" />
                                     <Label layoutX="21.0" layoutY="190.0" text="Pin Locations:" />
                                     <Button fx:id="setButton" layoutX="14.0" layoutY="140.0" mnemonicParsing="false" onMouseClicked="#setButtonClicked" text="Set" />
                                     <Button fx:id="reset1Button" disable="true" layoutX="104.0" layoutY="140.0" mnemonicParsing="false" onMouseClicked="#reset1ButtonClicked" text="Reset" />
-                                    <TextField fx:id="longText" layoutX="106.0" layoutY="216.0" prefHeight="27.0" prefWidth="81.0" promptText="Longitude" />
-                                    <TextField fx:id="latText" layoutX="16.0" layoutY="216.0" prefHeight="27.0" prefWidth="74.0" promptText="Latitude" />
-                                    <Button fx:id="addButton" layoutX="16.0" layoutY="325.0" mnemonicParsing="false" onMouseClicked="#addButtonClicked" prefHeight="25.0" prefWidth="44.0" text="Add" />
+                                    <TextField fx:id="longText" disable="true" layoutX="106.0" layoutY="216.0" prefHeight="27.0" prefWidth="81.0" promptText="Longitude" />
+                                    <TextField fx:id="latText" disable="true" layoutX="16.0" layoutY="216.0" prefHeight="27.0" prefWidth="74.0" promptText="Latitude" />
+                                    <Button fx:id="addButton" disable="true" layoutX="16.0" layoutY="325.0" mnemonicParsing="false" onMouseClicked="#addButtonClicked" prefHeight="25.0" prefWidth="44.0" text="Add" />
                                     <TableView fx:id="pinTable" layoutX="15.0" layoutY="371.0" prefHeight="153.0" prefWidth="170.0">
                                        <columns>
                                           <TableColumn fx:id="latColumn" prefWidth="85.0" text="Latitude" />
                                           <TableColumn fx:id="longColumn" prefWidth="84.0" text="Longitude" />
                                        </columns>
                                     </TableView>
-                                    <Button fx:id="deleteButton" layoutX="99.0" layoutY="530.0" mnemonicParsing="false" onMouseClicked="#deleteButtonClicked" prefHeight="25.0" prefWidth="35.0" text="Del" />
-                                    <Button fx:id="reset2Button" layoutX="140.0" layoutY="530.0" mnemonicParsing="false" onMouseClicked="#reset2ButtonClicked" prefHeight="25.0" prefWidth="45.0" text="Reset" />
-                                    <Button fx:id="descriptionButton" layoutX="15.0" layoutY="530.0" mnemonicParsing="false" onMouseClicked="#descriptionButtonClicked" prefHeight="25.0" prefWidth="78.0" text="Description" />
+                                    <Button fx:id="deleteButton" layoutX="15.0" layoutY="530.0" mnemonicParsing="false" onMouseClicked="#deleteButtonClicked" prefHeight="25.0" prefWidth="82.0" text="Delete" />
+                                    <Button fx:id="reset2Button" layoutX="103.0" layoutY="530.0" mnemonicParsing="false" onMouseClicked="#reset2ButtonClicked" prefHeight="25.0" prefWidth="82.0" text="Reset" />
                                     <Separator layoutY="176.0" prefHeight="1.0" prefWidth="200.0" />
                                     <Separator layoutX="2.0" layoutY="359.0" prefHeight="2.0" prefWidth="198.0" />
+                                    <Separator layoutX="197.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="571.0" prefWidth="3.0" />
                                  </children>
                               </AnchorPane>
                         </content>
@@ -97,49 +87,88 @@
                         <content>
                           <AnchorPane>
                                  <children>
-                                    <ImageView fitHeight="84.0" fitWidth="112.0" layoutX="49.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="372.0" AnchorPane.leftAnchor="49.0" AnchorPane.rightAnchor="58.67567443847656" AnchorPane.topAnchor="27.0">
+                                    <ImageView fx:id="protractor" fitHeight="114.0" fitWidth="193.0" layoutX="2.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@Selection_003.png" />
+                                          <Image url="@Protractor.png" />
                                        </image>
                                     </ImageView>
-                                    <Label layoutX="34.0" layoutY="111.0" text="#inclination_angle" />
-                                    <ImageView fitHeight="100.0" fitWidth="97.0" layoutX="45.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="roverSpindle" fitHeight="150.0" fitWidth="200.0" layoutX="18.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@compass-512.png" />
+                                          <Image url="@roverAngle.png" />
                                        </image>
                                     </ImageView>
-                                    <Label layoutX="65.0" layoutY="308.0" text="Forward" />
-                                    <Label layoutX="23.0" layoutY="353.0" text="Left" />
-                                    <Label layoutX="142.0" layoutY="353.0" text="Right" />
-                                    <Label layoutX="68.0" layoutY="397.0" text="Reverse" />
-                                    <ImageView fitHeight="60.0" fitWidth="58.0" layoutX="65.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true">
+                                    <Label fx:id="angleTextLabel" layoutX="55.0" layoutY="199.0" prefHeight="27.0" prefWidth="94.0" text="Angle:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fx:id="compassBody" fitHeight="127.0" fitWidth="122.0" layoutX="38.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@images.jpg" />
+                                          <Image url="@compass.png" />
                                        </image>
                                     </ImageView>
-                                    <Label layoutX="52.0" layoutY="256.0" text="#orientation" />
+                                    <ImageView fx:id="pinOfCompass" fitHeight="65.0" fitWidth="64.0" layoutX="68.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@pinOfCompass.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="27.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@arrows.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Circle fx:id="rightArrow" fill="#00ff33" layoutX="148.0" layoutY="480.0" radius="10.0" smooth="false" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                    <Circle fx:id="leftArrow" fill="#00ff33" layoutX="55.0" layoutY="480.0" radius="10.0" smooth="false" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                    <Circle fx:id="forwardArrow" fill="#00ff33" layoutX="100.0" layoutY="433.0" radius="11.0" smooth="false" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                    <Circle fx:id="backwardArrow" fill="#00ff33" layoutX="100.0" layoutY="528.0" radius="10.0" smooth="false" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                                    <Separator layoutX="2.0" layoutY="243.0" prefHeight="4.0" prefWidth="200.0" />
+                                    <Separator layoutY="387.0" prefWidth="200.0" />
+                                    <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="569.0" prefWidth="5.0" />
                                  </children>
                               </AnchorPane>
                         </content>
                       </Tab>
                     </tabs>
                   </TabPane>
-                  <AnchorPane layoutX="210.0" layoutY="512.0" prefHeight="85.0" prefWidth="678.0">
+                  <AnchorPane layoutX="198.0" layoutY="476.0" prefHeight="120.0" prefWidth="689.0">
                      <children>
-                        <Label fx:id="humidity" layoutX="24.0" layoutY="20.0" text="Humidity: #%" />
-                        <Label fx:id="pressure" layoutX="116.0" layoutY="20.0" text="Barometric Pressure: #kPa" />
-                        <Label fx:id="lux" layoutX="278.0" layoutY="20.0" text="Lux: #" />
-                        <Label fx:id="battery" layoutX="336.0" layoutY="20.0" text="Battery: #%" />
-                        <Label fx:id="temperature" layoutX="421.0" layoutY="20.0" text="Temperature:" />
-                        <Label layoutX="538.0" layoutY="5.0" text="Calibration Status" />
-                        <Label layoutX="538.0" layoutY="33.0" text="Connection Status" />
-                        <Circle fx:id="calibrationStatusCircle" fill="RED" layoutX="655.0" layoutY="13.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Circle fx:id="connectionStatusCircle" fill="#ff1f1f" layoutX="655.0" layoutY="42.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Separator layoutX="521.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="86.0" prefWidth="4.0" />
+                        <Label fx:id="humidity" layoutX="5.0" layoutY="3.0" prefHeight="23.0" prefWidth="88.0" text="Humidity: #%" />
+                        <Label fx:id="pressure" layoutX="105.0" layoutY="6.0" prefHeight="17.0" prefWidth="155.0" text="Barometric Pressure: #kPa" />
+                        <Label fx:id="lux" layoutX="272.0" layoutY="6.0" prefHeight="17.0" prefWidth="53.0" text="Lux: #" />
+                        <Label fx:id="battery" layoutX="338.0" layoutY="6.0" prefHeight="17.0" prefWidth="70.0" text="Battery: #%" />
+                        <Label fx:id="temperature" layoutX="418.0" layoutY="6.0" prefHeight="17.0" prefWidth="102.0" text="Temperature:" />
+                        <Label fx:id="temperature1" layoutX="8.0" layoutY="96.0" text="Message:" />
+                        <Label fx:id="messageTextLabel" layoutX="65.0" layoutY="95.0" prefHeight="20.0" prefWidth="451.0" wrapText="true" />
+                        <Label layoutX="550.0" layoutY="7.0" text="Calibration Status" />
+                        <Label layoutX="550.0" layoutY="35.0" text="Connection Status" />
+                        <Label fx:id="latitude" layoutX="526.0" layoutY="63.0" prefHeight="27.0" prefWidth="156.0" text="Lat    : 29.25">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="longitude" layoutX="526.0" layoutY="89.0" prefHeight="27.0" prefWidth="156.0" text="Long : 98.52">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="8.0" layoutY="55.0" text="Map Location :" />
+                        <TextField fx:id="mapLocationText" layoutX="100.0" layoutY="51.0" prefHeight="25.0" prefWidth="283.0" promptText="Please enter the path for the map image" />
+                        <Button fx:id="browseMapButton" layoutX="387.0" layoutY="51.0" mnemonicParsing="false" onMouseClicked="#browseClicked" text="Browse" />
+                        <Button fx:id="loadMapButton" layoutX="446.0" layoutY="51.0" mnemonicParsing="false" onMouseClicked="#loadMapClicked" text="Load Map" />
+                        <Separator layoutX="1.0" layoutY="88.0" prefHeight="5.0" prefWidth="521.0" />
+                        <Separator layoutX="523.0" layoutY="60.0" prefHeight="3.0" prefWidth="165.0" />
+                        <Circle fx:id="calibrationStatusCircle" fill="RED" layoutX="667.0" layoutY="15.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="connectionStatusCircle" fill="#ff1f1f" layoutX="667.0" layoutY="44.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Separator layoutX="2.0" layoutY="-2.0" prefHeight="3.0" prefWidth="688.0" />
+                        <Separator layoutX="521.0" layoutY="-3.0" orientation="VERTICAL" prefHeight="126.0" prefWidth="5.0" />
+                        <Separator layoutX="2.0" layoutY="34.0" prefHeight="3.0" prefWidth="521.0" />
+                        <Separator layoutX="95.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="37.0" prefWidth="6.0" />
+                        <Separator layoutX="263.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="37.0" prefWidth="6.0" />
+                        <Separator layoutX="326.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="37.0" prefWidth="6.0" />
+                        <Separator layoutX="410.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="37.0" prefWidth="6.0" />
+                        <Separator layoutX="-1.0" layoutY="-3.0" orientation="VERTICAL" prefHeight="124.0" prefWidth="6.0" />
                      </children>
                   </AnchorPane>
-                  <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="596.0" prefWidth="2.0" />
-                  <Separator layoutX="201.0" layoutY="510.0" prefHeight="1.0" prefWidth="684.0" />
                </children>
             </AnchorPane>
          </content>

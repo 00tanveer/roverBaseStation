@@ -20,7 +20,6 @@ import roverbasestation.PrimaryWindowController;
 
 public class RoverBaseStation extends Application 
 {
-    
     @Override
     public void start(Stage stage) throws Exception 
     {
@@ -28,10 +27,10 @@ public class RoverBaseStation extends Application
         
         Scene scene = new Scene(root);
         
+        PrimaryWindowController.init(stage);
+        
         stage.setScene(scene);
         stage.show();
-        
-        
     }
 
     /**
