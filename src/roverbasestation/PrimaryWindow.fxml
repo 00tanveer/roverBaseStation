@@ -42,11 +42,43 @@
                <children>
                   <AnchorPane fx:id="map" layoutX="199.0" prefHeight="477.0" prefWidth="687.0">
                      <children>
-                        <ImageView fx:id="mapImageView" fitHeight="440.0" fitWidth="651.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="mapImageView" fitHeight="440.0" fitWidth="650.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@Selection_00.png" />
                            </image>
                         </ImageView>
+                        <AnchorPane fx:id="scale" prefHeight="476.0" prefWidth="690.0">
+                           <children>
+                              <Separator layoutY="437.0" prefHeight="7.0" prefWidth="659.0" />
+                              <Separator layoutX="651.0" layoutY="-5.0" orientation="VERTICAL" prefHeight="444.0" prefWidth="9.0" />
+                              <Line endX="660.0" layoutY="445.0" strokeWidth="2.0" />
+                              <Line endX="660.0" endY="445.0" startX="660.0" strokeWidth="2.0" />
+                              <Line endX="2.0" endY="460.0" startX="1.0" startY="445.0" strokeWidth="2.0" />
+                              <Line endX="130.0" endY="460.0" startX="130.0" startY="445.0" strokeWidth="2.0" />
+                              <Line endX="260.0" endY="460.0" startX="260.0" startY="445.0" strokeWidth="2.0" />
+                              <Line endX="390.0" endY="460.0" startX="390.0" startY="445.0" strokeWidth="2.0" />
+                              <Line endX="520.0" endY="460.0" startX="520.0" startY="445.0" strokeWidth="2.0" />
+                              <Line endX="650.0" endY="460.0" startX="650.0" startY="445.0" strokeWidth="2.0" />
+                              <Line endX="675.0" startX="660.0" strokeWidth="2.0" />
+                              <Line endX="675.0" endY="88.0" startX="660.0" startY="88.0" strokeWidth="2.0" />
+                              <Line endX="675.0" endY="176.0" startX="660.0" startY="176.0" strokeWidth="2.0" />
+                              <Line endX="675.0" endY="264.0" startX="660.0" startY="264.0" strokeWidth="2.0" />
+                              <Line endX="675.0" endY="352.0" startX="660.0" startY="352.0" strokeWidth="2.0" />
+                              <Line endX="675.0" endY="440.0" startX="660.0" startY="440.0" strokeWidth="2.0" />
+                              <Label fx:id="longScale6" layoutX="622.0" layoutY="458.0" />
+                              <Label fx:id="longScale5" layoutX="527.0" layoutY="458.0" />
+                              <Label fx:id="longScale4" layoutX="399.0" layoutY="458.0" />
+                              <Label fx:id="longScale3" layoutX="268.0" layoutY="458.0" />
+                              <Label fx:id="longScale2" layoutX="137.0" layoutY="457.0" />
+                              <Label fx:id="longScale1" layoutX="8.0" layoutY="458.0" />
+                              <Label fx:id="latScale6" layoutX="661.0" layoutY="6.0" />
+                              <Label fx:id="latScale5" layoutX="661.0" layoutY="62.0" />
+                              <Label fx:id="latScale4" layoutX="661.0" layoutY="150.0" />
+                              <Label fx:id="latScale3" layoutX="661.0" layoutY="240.0" />
+                              <Label fx:id="latScale2" layoutX="661.0" layoutY="326.0" />
+                              <Label fx:id="latScale1" layoutX="661.0" layoutY="418.0" />
+                           </children>
+                        </AnchorPane>
                      </children>
                   </AnchorPane>
                   <TabPane prefHeight="598.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
@@ -55,18 +87,18 @@
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <TextField fx:id="lowerLongText" layoutX="105.0" layoutY="40.0" prefHeight="27.0" prefWidth="81.0" promptText="Longitude" />
-                                    <TextField fx:id="upperLongText" layoutX="104.0" layoutY="105.0" prefHeight="27.0" prefWidth="82.0" promptText="Longitude" />
                                     <Label layoutX="22.0" layoutY="17.0" text="Lower left coordinates" />
                                     <Label layoutX="18.0" layoutY="80.0" text="Upper right coordinates" />
                                     <TextField fx:id="lowerLatText" layoutX="15.0" layoutY="40.0" prefHeight="27.0" prefWidth="74.0" promptText="Latitude" />
+                                    <TextField fx:id="lowerLongText" layoutX="105.0" layoutY="40.0" prefHeight="27.0" prefWidth="81.0" promptText="Longitude" />
                                     <TextField fx:id="upperLatText" layoutX="15.0" layoutY="104.0" prefHeight="27.0" prefWidth="74.0" promptText="Latitude" />
-                                    <TextField fx:id="descriptionText" disable="true" layoutX="16.0" layoutY="252.0" prefHeight="62.0" prefWidth="171.0" promptText="Description" />
-                                    <Label layoutX="21.0" layoutY="190.0" text="Pin Locations:" />
+                                    <TextField fx:id="upperLongText" layoutX="104.0" layoutY="105.0" prefHeight="27.0" prefWidth="82.0" promptText="Longitude" />
                                     <Button fx:id="setButton" layoutX="14.0" layoutY="140.0" mnemonicParsing="false" onMouseClicked="#setButtonClicked" text="Set" />
                                     <Button fx:id="reset1Button" disable="true" layoutX="104.0" layoutY="140.0" mnemonicParsing="false" onMouseClicked="#reset1ButtonClicked" text="Reset" />
-                                    <TextField fx:id="longText" disable="true" layoutX="106.0" layoutY="216.0" prefHeight="27.0" prefWidth="81.0" promptText="Longitude" />
+                                    <Label layoutX="21.0" layoutY="190.0" text="Pin Locations:" />
                                     <TextField fx:id="latText" disable="true" layoutX="16.0" layoutY="216.0" prefHeight="27.0" prefWidth="74.0" promptText="Latitude" />
+                                    <TextField fx:id="longText" disable="true" layoutX="106.0" layoutY="216.0" prefHeight="27.0" prefWidth="81.0" promptText="Longitude" />
+                                    <TextField fx:id="descriptionText" disable="true" layoutX="16.0" layoutY="252.0" prefHeight="62.0" prefWidth="171.0" promptText="Description" />
                                     <Button fx:id="addButton" disable="true" layoutX="16.0" layoutY="325.0" mnemonicParsing="false" onMouseClicked="#addButtonClicked" prefHeight="25.0" prefWidth="44.0" text="Add" />
                                     <TableView fx:id="pinTable" layoutX="15.0" layoutY="371.0" prefHeight="153.0" prefWidth="170.0">
                                        <columns>
@@ -156,10 +188,10 @@
                         <Button fx:id="browseMapButton" layoutX="387.0" layoutY="51.0" mnemonicParsing="false" onMouseClicked="#browseClicked" text="Browse" />
                         <Button fx:id="loadMapButton" layoutX="446.0" layoutY="51.0" mnemonicParsing="false" onMouseClicked="#loadMapClicked" text="Load Map" />
                         <Separator layoutX="1.0" layoutY="88.0" prefHeight="5.0" prefWidth="521.0" />
-                        <Separator layoutX="523.0" layoutY="60.0" prefHeight="3.0" prefWidth="165.0" />
+                        <Separator layoutX="523.0" layoutY="59.0" prefHeight="4.0" prefWidth="264.0" />
                         <Circle fx:id="calibrationStatusCircle" fill="RED" layoutX="667.0" layoutY="15.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle fx:id="connectionStatusCircle" fill="#ff1f1f" layoutX="667.0" layoutY="44.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Separator layoutX="2.0" layoutY="-2.0" prefHeight="3.0" prefWidth="688.0" />
+                        <Separator layoutX="2.0" layoutY="-3.0" prefHeight="4.0" prefWidth="742.0" />
                         <Separator layoutX="521.0" layoutY="-3.0" orientation="VERTICAL" prefHeight="126.0" prefWidth="5.0" />
                         <Separator layoutX="2.0" layoutY="34.0" prefHeight="3.0" prefWidth="521.0" />
                         <Separator layoutX="95.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="37.0" prefWidth="6.0" />

@@ -30,6 +30,7 @@ public class RoverBaseStation extends Application
         PrimaryWindowController.init(stage);
         
         stage.setScene(scene);
+        stage.setTitle("ROVER");
         stage.show();
     }
 

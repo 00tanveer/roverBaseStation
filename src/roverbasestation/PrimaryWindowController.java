@@ -61,10 +61,13 @@ public class PrimaryWindowController implements Initializable, Runnable {
     @FXML 
     private TextField targetIP, port;
     
+    //map FXML ids
     @FXML
     public AnchorPane map;
     @FXML
     public ImageView mapImageView;
+    @FXML
+    public Label longScale1, longScale2, longScale3, longScale4, longScale5, longScale6, latScale1, latScale2, latScale3, latScale4, latScale5, latScale6;
     
     //pin console FXML ids
     @FXML
@@ -100,9 +103,9 @@ public class PrimaryWindowController implements Initializable, Runnable {
     private boolean connect;
     
     //non-FXML variables - Navigation
-    public double lowerLat, lowerLong, upperLat, upperLong, mapWidth, mapHeight, mapOffsetX, mapOffsetY, lengthDifference, widthDifference, latVal, longVal;
+    public double lowerLat, lowerLong, upperLat, upperLong, mapWidth, mapHeight, mapOffsetX, mapOffsetY, widthDifference, heightDifference, latVal, longVal;
     public final ObservableList<PinList> dataSource = FXCollections.observableArrayList();
-    public int pinCounterOffset = 1, pinCounter;
+    public int pinCounterOffset = 2, pinCounter;
     public boolean calibrationDone;
     
     private File mapImage = null;
@@ -119,13 +122,13 @@ public class PrimaryWindowController implements Initializable, Runnable {
         upperLat = 0;
         upperLong = 0;
         
-        mapWidth = 651.0;
-        mapHeight = 440.0;
+        mapWidth = mapImageView.getFitWidth();
+        mapHeight = mapImageView.getFitHeight();
         mapOffsetX = 0;
         mapOffsetY = 0;
         
-        lengthDifference = 0;
         widthDifference = 0;
+        heightDifference = 0;
         
         pinCounter = pinCounterOffset;
         
@@ -300,14 +303,98 @@ public class PrimaryWindowController implements Initializable, Runnable {
             upperLat = Double.parseDouble(upperLatText.getText());
             upperLong = Double.parseDouble(upperLongText.getText());
             
-            lengthDifference = Math.abs((upperLong - lowerLong));
-            widthDifference = Math.abs((upperLat - lowerLat));
+            widthDifference = Math.abs((upperLong - lowerLong));
+            heightDifference = Math.abs((upperLat - lowerLat));
             
+            setScaleLabels(true);
+                        
             calibrationStatusCircle.setFill(Color.LIME);
             calibrationDone = true;
             
             messageTextLabel.setTextFill(Color.GREEN);
             messageTextLabel.setText("Calibration Done");
+        }
+    }
+    
+    private void setScaleLabels(boolean active)
+    {
+        if(active == true)
+        {
+            Double latValForLabel = lowerLat, longValForLabel = lowerLong;
+            
+            if(lowerLat < upperLat)
+            {
+                latScale1.setText(String.format("%.3f", latValForLabel));
+                latValForLabel += heightDifference/5;
+                latScale2.setText(String.format("%.3f", latValForLabel));
+                latValForLabel += heightDifference/5;
+                latScale3.setText(String.format("%.3f", latValForLabel));
+                latValForLabel += heightDifference/5;
+                latScale4.setText(String.format("%.3f", latValForLabel));
+                latValForLabel += heightDifference/5;
+                latScale5.setText(String.format("%.3f", latValForLabel));
+                latValForLabel += heightDifference/5;
+                latScale6.setText(String.format("%.3f", latValForLabel));
+            }
+            else
+            {
+                latScale1.setText(String.format("%.3f", latValForLabel));
+                latValForLabel -= heightDifference/5;
+                latScale2.setText(String.format("%.3f", latValForLabel));
+                latValForLabel -= heightDifference/5;
+                latScale3.setText(String.format("%.3f", latValForLabel));
+                latValForLabel -= heightDifference/5;
+                latScale4.setText(String.format("%.3f", latValForLabel));
+                latValForLabel -= heightDifference/5;
+                latScale5.setText(String.format("%.3f", latValForLabel));
+                latValForLabel -= heightDifference/5;
+                latScale6.setText(String.format("%.3f", latValForLabel));
+            }
+            
+            if(lowerLong < upperLong)
+            {
+                longScale1.setText(String.format("%.3f", longValForLabel));
+                longValForLabel += widthDifference/5;
+                longScale2.setText(String.format("%.3f", longValForLabel));
+                longValForLabel += widthDifference/5;
+                longScale3.setText(String.format("%.3f", longValForLabel));
+                longValForLabel += widthDifference/5;
+                longScale4.setText(String.format("%.3f", longValForLabel));
+                longValForLabel += widthDifference/5;
+                longScale5.setText(String.format("%.3f", longValForLabel));
+                longValForLabel += widthDifference/5;
+                longScale6.setText(String.format("%.3f", longValForLabel));
+            }
+            else
+            {
+                longScale1.setText(String.format("%.3f", longValForLabel));
+                longValForLabel -= widthDifference/5;
+                longScale2.setText(String.format("%.3f", longValForLabel));
+                longValForLabel -= widthDifference/5;
+                longScale3.setText(String.format("%.3f", longValForLabel));
+                longValForLabel -= widthDifference/5;
+                longScale4.setText(String.format("%.3f", longValForLabel));
+                longValForLabel -= widthDifference/5;
+                longScale5.setText(String.format("%.3f", longValForLabel));
+                longValForLabel -= widthDifference/5;
+                longScale6.setText(String.format("%.3f", longValForLabel));
+            }
+        }
+        else
+        {
+            latScale1.setText("");
+            latScale2.setText("");
+            latScale3.setText("");
+            latScale4.setText("");
+            latScale5.setText("");
+            latScale6.setText("");
+            
+            longScale1.setText("");
+            longScale2.setText("");
+            longScale3.setText("");
+            longScale4.setText("");
+            longScale5.setText("");
+            longScale6.setText("");
         }
     }
     
@@ -335,6 +422,8 @@ public class PrimaryWindowController implements Initializable, Runnable {
         lowerLongText.setText("");
         upperLatText.setText("");
         upperLongText.setText("");
+        
+        setScaleLabels(false);
         
         calibrationStatusCircle.setFill(Color.RED);
         calibrationDone = false;
@@ -392,7 +481,7 @@ public class PrimaryWindowController implements Initializable, Runnable {
         {
             double temp;
             
-            temp = ((lowerLat - latOrLongVal)*mapHeight/widthDifference);
+            temp = ((lowerLat - latOrLongVal)*mapHeight/heightDifference);
             
             return Math.abs(temp);
         }
@@ -400,7 +489,7 @@ public class PrimaryWindowController implements Initializable, Runnable {
         {
             double temp;
             
-            temp = ((lowerLong - latOrLongVal)*mapWidth)/lengthDifference;
+            temp = ((lowerLong - latOrLongVal)*mapWidth)/widthDifference;
             
             return Math.abs(temp);
         }
@@ -516,16 +605,12 @@ public class PrimaryWindowController implements Initializable, Runnable {
                 String imagePath = mapImage.toURI().toURL().toString();
                 Image newMap = new Image(imagePath);
                 
-                ImageView newMapImageView = new ImageView();
+                mapImageView.setImage(newMap);
                 
-                newMapImageView.setLayoutX(mapImageView.getLayoutX());
-                newMapImageView.setLayoutY(mapImageView.getLayoutY());
-                newMapImageView.setFitWidth(mapImageView.getFitWidth());
-                newMapImageView.setFitHeight(mapImageView.getFitHeight());
+                mapLocationText.setText("");
                 
-                newMapImageView.setCache(true);
-                
-                newMapImageView.setImage(newMap);
+                messageTextLabel.setTextFill(Color.GREEN);
+                messageTextLabel.setText("Map loaded successfully - Please check calibration");
             }
             catch(Exception e)
             {
