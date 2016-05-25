@@ -12,7 +12,6 @@
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="888.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="roverbasestation.PrimaryWindowController">
   <tabs>
-      <Tab text="Chemist" />
     <Tab text="Connect">
          <content>
             <SplitPane dividerPositions="0.5233333333333333" prefHeight="160.0" prefWidth="200.0">
@@ -205,5 +204,6 @@
             </AnchorPane>
          </content>
     </Tab>
+      <Tab text="Chemist" />
   </tabs>
 </TabPane>

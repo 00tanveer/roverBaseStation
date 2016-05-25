@@ -157,16 +157,6 @@ public class PrimaryWindowController implements Initializable, Runnable {
         
         while(true)
         {
-//            if(connect == false)
-//            {
-//                System.out.println("Connect: " + connect);
-//                try {
-//                    Thread.sleep(1000);
-//                } catch (InterruptedException ex) {
-//                    Logger.getLogger(PrimaryWindowController.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            }
-            
             if(connect)
             {
                 System.out.println("run is running");
@@ -175,13 +165,14 @@ public class PrimaryWindowController implements Initializable, Runnable {
                         BufferedReader reader;
                         String line, lat, hum;
                         reader = new BufferedReader(new InputStreamReader(connObject.client().getInputStream()));
-                        
                         line = reader.readLine();
+                         
+                        System.out.println(line);
                         
-                        System.out.println(line.split(",")[0]);
-                        hum = line.split(",")[1];
+                        //System.out.println(line.split(",")[0]);
+                        hum = line.split(",")[0];
                         System.out.println(hum);
-                        lat = line.split(",")[2];
+                        lat = line.split(",")[1];
                         System.out.println(lat);
                         
                         Platform.runLater(new Runnable() {
@@ -189,19 +180,17 @@ public class PrimaryWindowController implements Initializable, Runnable {
                         public void run() 
                         {
                             //if you change the UI, do it here !
-                            humidity.setText("Humidity: " + hum.substring(10) + "%");
-                            latitude.setText("Latitude: " + lat.substring(10));
+                            humidity.setText("Humidity: " + hum.substring(8) + "%");
+                            latitude.setText("Latitude: " + lat.substring(8));
                         }
                         });
                         
-                        
-                    
                         if(connObject.getInputStreamRead() == -1)
                         {
                             connectButton.setDisable(false);
                             targetIP.setDisable(false);
                             connectionStatusCircle.setFill(Color.RED);
-                            statusCircle.setFill(Color.RED);
+                            //statusCircle.setFill(Color.RED);
                             connect = false;
 
                             alertLabel.setVisible(true);
@@ -250,7 +239,7 @@ public class PrimaryWindowController implements Initializable, Runnable {
         if(connect)
         {
             connectionStatusCircle.setFill(Color.GREEN);
-            statusCircle.setFill(Color.GREEN);
+            //statusCircle.setFill(Color.GREEN);
             connectButton.setDisable(true);
             targetIP.setDisable(true);
             port.setDisable(true);
